@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\{{modelName}}Request;
+use App\DataTables\{{modelNamePluralLowerCase}}DataTable;
+use App\Models\{{modelName}};
+
+
+class {{modelName}}Controller extends Controller
+{
+    public function index({{modelNamePluralLowerCase}}DataTable $dataTable)
+    {
+        return $dataTable->render('{{modelName}}.index');
+    }
+
+    public function create(){
+        
+        return view('{{modelName}}/create');
+    }
+
+    public function edit($id){
+        ${{modelNamePluralLowerCase}} = {{modelName}}::findorfail($id);
+        return view('{{modelName}}/edit', ['data' => ${{modelNamePluralLowerCase}}]);
+    }
+
+    public function store({{modelName}}Request $request)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::create($request->all());
+        return redirect("/{{modelNamePluralLowerCase}}");
+    }
+
+    public function show($id)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::findOrFail($id);
+
+        return response()->json(${{modelNameSingularLowerCase}});
+    }
+
+    public function update({{modelName}}Request $request, $id)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::findOrFail($id);
+        ${{modelNameSingularLowerCase}}->update($request->all());
+
+        return redirect("/{{modelNamePluralLowerCase}}");
+    }
+
+    public function destroy($id)
+    {
+        {{modelName}}::destroy($id);
+
+        return redirect("/{{modelNamePluralLowerCase}}");
+    }
+}

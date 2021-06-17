@@ -1,0 +1,9 @@
+@extends('{{s_name}}.layout.layout')
+
+@section('main')
+{{$dataTable->table()}}
+@endsection
+
+@push('scripts')
+    {{$dataTable->scripts()}}
+@endpush
