@@ -146,6 +146,10 @@ public function handle()
 // $file_data = $name.Controller::class;
 // $file_data .= file_get_contents(base_path('routes/web.php'));
 // file_put_contents(base_path('routes/web.php'), $file_data);
+// $route = file_get_contents(base_path('routes/web.php'));
+// $updated_layout_file = str_replace('<?php', "'<?php \n use App\Http\Controllers\'.$name.'Controller;'", $route);
+// file_put_contents(base_path("routes/web.php"), $updated_layout_file);
+
 
 
 File::append(base_path('routes/web.php'), 'Route::resource(\'' . Str::plural(strtolower($name)) . "', {$name}Controller::class);\n");

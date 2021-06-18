@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [UsersController::class, 'index' ]);Route::resource('students', studentController::class);
+Route::get('/', [UsersController::class, 'index' ]);
+

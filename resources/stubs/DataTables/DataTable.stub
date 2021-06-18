@@ -22,7 +22,11 @@ class {{name}}DataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', '<a href="{{name}}/{{$id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-            <button data-id = {{$id}} id = "delete_data"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            <form method="POST" action="{{name}}/{{$id}}">
+            @csrf
+            @method("DELETE")
+            <button type = "submit" id = "delete_data"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </form>
             ');
             
     }
